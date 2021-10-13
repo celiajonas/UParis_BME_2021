@@ -14,7 +14,7 @@ The following program must be installed :
 
 [NUPACK](http://www.nupack.org) (Zadeh et al. 2011. Journal of Computational Chemistry)
 
-Scripts also  depends on the following Python libraries:
+Scripts also depends on the following Python libraries:
 
 - [Biopython](https://biopython.org) (Cock et al. 2009. Bioinformatics)
 - [NumPy](https://numpy.org)
@@ -22,6 +22,7 @@ Scripts also  depends on the following Python libraries:
 - Os
 - Csv 
 
+Templates also depends on the [easygui](https://easygui.readthedocs.io/en/master/) library.
 
 ## Scripts
 All scripts are written in Python 3 and depend on the previous libraries.
@@ -30,19 +31,9 @@ All scripts are written in Python 3 and depend on the previous libraries.
 
 - SwitchDesigner_helper_functions.py: Contains several helper functions for the SwitchDesigner_main_function script.
 
-- Example_automated.py: Automated script containing input parameters and SwitchDesigner().
-
-- Example_script.ipynb: Examples of SwitchDesigner() implemented in a script.
-
 ## Input
 
 The workflow is fully automated to be executed as follows as long as all the scripts are in the current directory:
-
-```
-python Example_automated.py
-```
-
-The function can also be used separatly in a python script: 
 
 ```
 parameters ={"input_seq":'/path/gene_name.fasta', 
@@ -70,7 +61,8 @@ The parameters dictionnary must contain all the necessary adjustable variables f
 
 ## Output
 
-The SwitchDesigner function generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
+The SwitchDesigner function return a dataframe identical to the .csv file called "selected_toeholds_results" detailed below. 
+The function also generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
 - Non paired count
 - Structure
 - Sequence
@@ -94,3 +86,11 @@ Toehold sequences are generated and tested to verify the following modalities : 
 - GC content	
 - Protein_sequence 
 Apart from those .csv files, the rest of the files are .txt files containing the sequence of each toehold selected, either in DNA or RNA.
+
+## Templates
+
+The folder Templates contains two python scripts with the SwitchDesigner function ready to be used.
+
+## Examples of results obtained with SwitchDesigner
+
+The folder Examples contains different results obtained with the SwitchDesigner function.
