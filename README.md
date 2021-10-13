@@ -22,7 +22,7 @@ Scripts also depends on the following Python libraries:
 - Os
 - Csv 
 
-Templates also depends on the [easygui](https://easygui.readthedocs.io/en/master/) library.
+Templates and examples also use the [easygui](https://easygui.readthedocs.io/en/master/) library.
 
 ## Scripts
 All scripts are written in Python 3 and depend on the previous libraries.
@@ -94,4 +94,4 @@ The folder [Templates](/Templates) contains two python scripts with the SwitchDe
 
 ## Examples of results obtained with SwitchDesigner
 
-The folder Examples contains different results obtained with the SwitchDesigner function.
+The folder [Results example](/Results example) contains different results obtained with the SwitchDesigner function.
