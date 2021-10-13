@@ -72,11 +72,11 @@ The function also generate an output folder named after the miRNA chosen. A firs
 - Length paired trigger 
 
 Toehold sequences are generated and tested to verify the following modalities : absence of a stop codon and stability of the beginning of the protein. A second .csv file called "selected_toeholds_results" is created containing the following informations : 
-- Non paired count
-- Structure	
+- Non paired count in the miRNA subsequence
+- Structure	of the miRNA subsequence
 - Sequence	
-- Start	
-- End	
+- Start	position
+- End	position
 - Length unpaired trigger	
 - Length paired trigger	
 - Index	
@@ -84,7 +84,7 @@ Toehold sequences are generated and tested to verify the following modalities : 
 - Binding energy of toehold only	
 - Binding energy of mRNA only	
 - GC content	
-- Protein_sequence 
+- Protein sequence 
 
 Apart from those .csv files, the rest of the files are .txt files containing the sequence of each toehold selected, either in DNA or RNA.
 
