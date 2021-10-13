@@ -85,6 +85,7 @@ Toehold sequences are generated and tested to verify the following modalities : 
 - Binding energy of mRNA only	
 - GC content	
 - Protein_sequence 
+
 Apart from those .csv files, the rest of the files are .txt files containing the sequence of each toehold selected, either in DNA or RNA.
 
 ## Templates
