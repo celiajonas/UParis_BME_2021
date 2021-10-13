@@ -27,9 +27,9 @@ Templates also depends on the [easygui](https://easygui.readthedocs.io/en/master
 ## Scripts
 All scripts are written in Python 3 and depend on the previous libraries.
 
-- SwitchDesigner_main_function.py: Contain the SwitchDesigner function that can be used in a implemented in a script (like in Example_script.ipynb) or in an automated script (Example_automated.py). SwitchDesigner sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
+- [SwitchDesigner_main_function.py](/SwitchDesigner/SwitchDesigner_main_function.py): Contain the SwitchDesigner function that can be used in a implemented in a script (like in Example_script.ipynb) or in an automated script (Example_automated.py). SwitchDesigner sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
 
-- SwitchDesigner_helper_functions.py: Contains several helper functions for the SwitchDesigner_main_function script.
+- [SwitchDesigner_helper_functions.py](/SwitchDesigner/SwitchDesigner_helper_functions.py): Contains several helper functions for the SwitchDesigner_main_function script.
 
 ## Input
 
@@ -89,7 +89,7 @@ Apart from those .csv files, the rest of the files are .txt files containing the
 
 ## Templates
 
-The folder Templates contains two python scripts with the SwitchDesigner function ready to be used.
+The folder [Templates](/Templates) contains two python scripts with the SwitchDesigner function ready to be used.
 
 ## Examples of results obtained with SwitchDesigner
 
