@@ -108,7 +108,7 @@ def SwitchDesigner(parameters):
         mRNA_structure=str(mRNA_dict['structure'])
         sub_struc = mRNA_structure[start_pos:end_pos-1]
         
-        # Count the number of unpaired bases
+        # Count the number of unpaired bases in the miRNA subsequence 
         unpaired = sub_struc.count('.')
         
         
