@@ -1,0 +1,7 @@
+Sequence : /Users/celiajonas/Downloads/ToeHold/miR-21-5p.fasta
+Length unpaired : 10
+Length paired : 9
+Output_folder : /Users/celiajonas/Downloads/ToeHold/Results example
+Reporter : ATGCGTAAA
+mol_type : RNA
+Minimum unpaired : 4
