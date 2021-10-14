@@ -94,4 +94,4 @@ The folder [Templates](/Templates) contains two python scripts with the SwitchDe
 
 ## Examples of results obtained with SwitchDesigner
 
-The folder [Results example](/Results example) contains different results obtained with the SwitchDesigner function.
+The folder [Results example](/UParis_BME_2021/Results%20example) contains different results obtained with the SwitchDesigner function.
