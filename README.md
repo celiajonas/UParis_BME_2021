@@ -2,11 +2,14 @@
 
 ## Description
 
-SwitchDesigner is a tool developped to design toehold switch that target microRNA.  ** explain what are toehold switch **
+SwitchDesigner is a tool developped to design toehold switch that target microRNA. Toehold switches are de-novo-designed-riboregulators that are  composed  of  two strands  of  RNA. Firstly,  the  switch  strand  contains a single stranded sequence at the 5’ end that is followed by the hairpin module upstream the repressed gene. The hairpin  module  includes  the  ribosome binding site  (RBS) in the loop of the hairpin and the start codon (AUG). The repressed  gene  encodes  for  a  colorimetric,  fluorescent, or  electrochemical  measurable  output.  The  other  RNA strand of the toehold switch is the trigger RNA that binds 
+to  the  toehold  sequence  thanks  to  Watson-Crick  base pairing,  enabling  the  opening  of  the  hairpin,  then  the exposition of the RBS site and start codon, leading to the translation of the coding gene previously repressed. 
+
+![](Figures/Design%20principle%20of%20toehold%20switch.jpg)
 
 SwitchDesigner is based on the [Toeholder](https://github.com/igem-ulaval/toeholder) from the ULaval Team from iGEM 2019, which was working only on RNA longer than 30 bp. We adapted to the new version 4.0 of NUPACK and modified it, allowing the use of microRNA as target. Verification of the final product, the protein produced when the RNA is bound to the Toehold Switch, was also added.
 
-** add a paragraph to talk about why we did it and igem? or just a line "go check our work" **
+For further information, please refer to our [webpage](https://2021.igem.org/Team:UParis_BME).
 
 ## Dependencies 
 
@@ -62,7 +65,7 @@ The parameters dictionnary must contain all the necessary adjustable variables f
 ## Output
 
 The SwitchDesigner function return a dataframe identical to the .csv file called "selected_toeholds_results" detailed below. 
-The function also generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
+The function also generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created, containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
 - Non paired count
 - Structure
 - Sequence
@@ -71,7 +74,7 @@ The function also generate an output folder named after the miRNA chosen. A firs
 - Length unpaired trigger	
 - Length paired trigger 
 
-Toehold sequences are generated and tested to verify the following modalities : absence of a stop codon and stability of the beginning of the protein. A second .csv file called "selected_toeholds_results" is created containing the following informations : 
+Toehold sequences are generated and tested to verify the following modalities : absence of a stop codon and stability of the beginning of the protein. A second .csv file called "selected_toeholds_results" is created and contains the following informations : 
 - Non paired count in the miRNA subsequence
 - Structure	of the miRNA subsequence
 - Sequence	
