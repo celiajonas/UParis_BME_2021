@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 ''' 1. Import libraries '''
-from SwitchDesigner_main_function import *
-#import easygui
+from SwitchMiDesigner_main_function import *
+import easygui
 
 ''' 2. Define parameters '''
-file = '/Users/celiajonas/Downloads/ToeHold/hsa-miR-34a.fasta'
-folder = '/Users/celiajonas/Downloads/ToeHold/results'
+file = '/Users/igemuparisbme/miRNA.fasta'
+folder = '/Users/igemuparisbme/Output'
 
 # can also be done with easygui
 #file = easygui.fileopenbox()
@@ -19,9 +19,10 @@ parameters ={"input_seq":file,
              "reporter":'ATGCGTAAA',
              "mol_type":'RNA',
              "len_unpaired":10,
-             "len_paired":4,
+             "len_paired":9,
              "suitable_aa":["L","F","Y","I","N","K"]}
 
 ''' 3. Run the function '''
 
-SwitchDesigner(parameters)
+SwitchMiDesigner(parameters)
+
