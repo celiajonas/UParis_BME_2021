@@ -1,4 +1,4 @@
-# SwitchDesigner
+# SwitchMiDesigner
 
 ## Description
 
