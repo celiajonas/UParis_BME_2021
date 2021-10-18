@@ -1,3 +1,0 @@
-Non paired residues	Structure	Sequence	Start	End	Length unpaired trigger	Length paired trigger	Index	Binding_energy_toehold_mRNA	Binding_energy_toehold	Binding_energy_mRNA	GC content	Protein_sequence
-6	.((((....)))).	AUACUGCCGGGUAA	3	16	10	4	0	-42.45363998413086	-21.25920295715332	-2.9161126613616943	36.17	MKKIHLAAAQKMRK
-8	((....))))....	CUGCCGGGUAAUGA	6	19	10	4	1	-47.82299041748047	-22.86638832092285	-2.9161126613616943	39.36	MKKLHLAAAQKMRK

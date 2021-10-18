@@ -1,7 +1,0 @@
-Sequence : /Users/celiajonas/Downloads/UParis_BME_2021-main/Results example/miRNA sequences/hsa-miR-34a.fasta
-Length unpaired : 10
-Length paired : 4
-Output_folder : /Users/celiajonas/Downloads/UParis_BME_2021-main/Results example/Results - 10 unpaired 4 paired
-Reporter : ATGCGTAAA
-mol_type : RNA
-Minimum unpaired residues : 4
