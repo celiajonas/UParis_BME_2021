@@ -74,7 +74,7 @@ The SwitchMi Designer function returns a dataframe identical to the .csv file ca
 - Length unpaired trigger = length of free nucleotides from the toehold switch that binds the trigger miRNA 
 - Length paired trigger = length of nucleotides engaged into the hairpin from the toehold switch that binds the trigger miRNA
 
-(2) A second .csv file called "selected_toeholds_results" is created and contains all toehold switches that passed the requirements (No stop codon in the sequence; No start codon except the one planned; The first amino acid is M and the next two amino acids are the predefined list of suitable amino acids). The file contains all previous data of these toehold switches (stored in toehold_candidates.csv) but also the following information:
+(2) A second .csv file called "selected_toeholds_results" is created and contains all toehold switches that passed the requirements (No stop codon in the sequence; No start codon except the one planned; MFE of toehold switch bound with the miRNA is smaller than the sum of the MFE of the miRNA and the toehold switch when they are not linked; The first amino acid is M and the next two amino acids are in the predefined list of suitable amino acids). The file contains all previous data of these toehold switches (stored in toehold_candidates.csv) but also the following information:
 - Index = Toehold sequence ID
 - Free energy of MFE proxy structure of the toehold switch bound with the trigger miRNA
 - Free energy of MFE proxy structure of the toehold switch 
