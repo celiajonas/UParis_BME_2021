@@ -54,7 +54,7 @@ The parameters dictionnary must contain all the necessary adjustable variables f
 - Path to the input sequence (FASTA formatted)
 - Path to the output folder
 - Length of the recognition sequence's region that will be unpaired to the toehold (Min. 4)
-- LLength of the recognition sequence's region that will be paired to the toehold (Min. 3)
+- Length of the recognition sequence's region that will be paired to the toehold (Min. 3)
 - Reporter gene or tag to be added to the end of the toehold
 - Input sequence molecule type (DNA or RNA)
 - Minimum number of unpaired residues in the secondary structure of the target mRNA for a candidate trigger to be considered
