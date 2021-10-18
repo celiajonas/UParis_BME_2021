@@ -31,7 +31,7 @@ All scripts are written in Python 3 and depend on the previous libraries.
 
 - [SwitchMiDesigner_main_function.py](/SwitchMiDesigner/SwitchMiDesigner_main_function.py): Contains the SwitchMi Designer function that can be used in a implemented in a python script. SwitchMi Designer sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
 
-- [SwitchMiDesigner_helper_functions.py](/SwitchMiDesigner/SwitchMiDesigner_helper_functions.py): Contains several helper functions for the SwitchDesigner_main_function script.
+- [SwitchMiDesigner_helper_functions.py](/SwitchMiDesigner/SwitchMiDesigner_helper_functions.py): Contains several helper functions for the SwitchMiDesigner_main_function script.
 
 ## Input
 
