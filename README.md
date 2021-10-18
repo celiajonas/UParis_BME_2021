@@ -2,12 +2,13 @@
 
 ## Description
 
-SwitchDesigner is a tool developped to design toehold switch that target microRNA. Toehold switches are de-novo-designed-riboregulators that are  composed  of  two strands  of  RNA. Firstly,  the  switch  strand  contains a single stranded sequence at the 5’ end that is followed by the hairpin module upstream the repressed gene. The hairpin  module  includes  the  ribosome binding site  (RBS) in the loop of the hairpin and the start codon (AUG). The repressed  gene  encodes  for  a  colorimetric,  fluorescent, or  electrochemical  measurable  output.  The  other  RNA strand of the toehold switch is the trigger RNA that binds 
+SwitchMi Designer is a tool developped to design toehold switch that target small RNA sequences such as microRNA. Toehold switches are de-novo-designed-riboregulators that are  composed  of  two strands  of  RNA. Firstly,  the  switch  strand  contains a single stranded sequence at the 5’ end that is followed by the hairpin module upstream the repressed gene. The hairpin  module  includes  the  ribosome binding site  (RBS) in the loop of the hairpin and the start codon (AUG). The repressed  gene  encodes  for  a  colorimetric,  fluorescent, or  electrochemical  measurable  output.  
+The  other  RNA strand of the toehold switch is the trigger RNA that binds 
 to  the  toehold  sequence  thanks  to  Watson-Crick  base pairing,  enabling  the  opening  of  the  hairpin,  then  the exposition of the RBS site and start codon, leading to the translation of the coding gene previously repressed. 
 
 ![](Figures/Design%20principle%20of%20toehold%20switch.jpg)
 
-SwitchDesigner is based on the [Toeholder](https://github.com/igem-ulaval/toeholder) from the ULaval Team from iGEM 2019, which was working only on RNA longer than 30 bp. We adapted to the new version 4.0 of NUPACK and modified it, allowing the use of microRNA as target. Verification of the final product, the protein produced when the RNA is bound to the Toehold Switch, was also added.
+SwitchMi Designer is based on the [Toeholder](https://github.com/igem-ulaval/toeholder) developed by the the ULaval iGEM Team in 2019. It is working on target RNA longer than 30 base pairs (bp), but a microRNA is usually between 18 and 23 bp. To adress this limitation, We adapted to the new version 4.0 of NUPACK and modified it, allowing the use of microRNA as target. Verification of the final product, the protein produced when the RNA is bound to the Toehold Switch, was also added.
 
 For further information, please refer to our [webpage](https://2021.igem.org/Team:UParis_BME).
 
@@ -30,7 +31,7 @@ Templates and examples also use the [easygui](https://easygui.readthedocs.io/en/
 ## Scripts
 All scripts are written in Python 3 and depend on the previous libraries.
 
-- [SwitchDesigner_main_function.py](/SwitchDesigner/SwitchDesigner_main_function.py): Contain the SwitchDesigner function that can be used in a implemented in a script (like in Example_script.ipynb) or in an automated script (Example_automated.py). SwitchDesigner sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
+- [SwitchDesigner_main_function.py](/SwitchDesigner/SwitchDesigner_main_function.py): Contains the SwitchMi Designer function that can be used in a implemented in a script (like in Example_script.ipynb) or in an automated script (Example_automated.py). SwitchMi Designer sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
 
 - [SwitchDesigner_helper_functions.py](/SwitchDesigner/SwitchDesigner_helper_functions.py): Contains several helper functions for the SwitchDesigner_main_function script.
 
@@ -64,7 +65,7 @@ The parameters dictionnary must contain all the necessary adjustable variables f
 
 ## Output
 
-The SwitchDesigner function return a dataframe identical to the .csv file called "selected_toeholds_results" detailed below. 
+The SwitchMi Designer function returns a dataframe identical to the .csv file called "selected_toeholds_results" detailed below. 
 The function also generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created, containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
 - Non paired count
 - Structure
@@ -97,4 +98,4 @@ The folder [Templates](/Templates) contains two python scripts with the SwitchDe
 
 ## Examples of results obtained with SwitchDesigner
 
-The folder [Results example](/Results%20example) contains different results obtained with the SwitchDesigner function.
+The folder [Results example](/Results%20example) contains different results obtained with the SwitchMi Designer function.
