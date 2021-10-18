@@ -1,0 +1,7 @@
+Sequence : /Users/celiajonas/Downloads/UParis_BME_2021-main/Results example/miRNA sequences/miR-21-5p.fasta
+Length unpaired : 12
+Length paired : 8
+Output_folder : /Users/celiajonas/Downloads/UParis_BME_2021-main/Results example/Results - 12 unpaired 8 paired
+Reporter : ATGCGTAAA
+mol_type : RNA
+Minimum unpaired residues : 4
