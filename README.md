@@ -26,12 +26,10 @@ Scripts also depends on the following Python libraries:
 - Os
 - Csv 
 
-Templates and examples also use the [easygui](https://easygui.readthedocs.io/en/master/) library.
-
 ## Scripts
 All scripts are written in Python 3 and depend on the previous libraries.
 
-- [SwitchMiDesigner_main_function.py](/SwitchMiDesigner/SwitchMiDesigner_main_function.py): Contains the SwitchMi Designer function that can be used in a implemented in a script (like in Example_script.ipynb) or in an automated script (Example_automated.py). SwitchMi Designer sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
+- [SwitchMiDesigner_main_function.py](/SwitchMiDesigner/SwitchMiDesigner_main_function.py): Contains the SwitchMi Designer function that can be used in a implemented in a python script. SwitchMi Designer sweeps through the miRNA sequence to find suitable candidate recognition sequences. Toehold sequences are then generated and tested to verify the absence of stop codon and the viability of the protein. 
 
 - [SwitchMiDesigner_helper_functions.py](/SwitchMiDesigner/SwitchMiDesigner_helper_functions.py): Contains several helper functions for the SwitchDesigner_main_function script.
 
@@ -49,53 +47,43 @@ parameters ={"input_seq":'/path/gene_name.fasta',
              "min_unpaired":4,
              "suitable_aa":["L","F","Y","I","N","K"]}
              
-SwitchDesigner(parameters)             
+SwitchMiDesigner(parameters)             
 ```
 
 The parameters dictionnary must contain all the necessary adjustable variables for the script, including:
 - Path to the input sequence (FASTA formatted)
 - Path to the output folder
-- Length of the unpaired region of the recognition sequence 
-- Length of the paired region of the recognition sequence
+- Length of the recognition sequence's region that will be unpaired to the toehold (Min. 4)
+- LLength of the recognition sequence's region that will be paired to the toehold (Min. 3)
 - Reporter gene or tag to be added to the end of the toehold
 - Input sequence molecule type (DNA or RNA)
-- Minimum number of unpaired bases in the secondary structure of the target mRNA for a candidate trigger to be considered
+- Minimum number of unpaired residues in the secondary structure of the target mRNA for a candidate trigger to be considered
 - List of suitable amino acids wanted for the first amino acid in the protein
 
 
 ## Output
 
-The SwitchMi Designer function returns a dataframe identical to the .csv file called "selected_toeholds_results" detailed below. 
-The function also generate an output folder named after the miRNA chosen. A first .csv file called "toehold_candidates" is created, containing all miRNA sequences that had the requirements (2 weak pairs/ 1 strong pair at the hairpin base and minimum 4 unpaired bases), with the following informations : 
-- Non paired count
-- Structure
-- Sequence
-- Start
-- End	
-- Length unpaired trigger	
-- Length paired trigger 
+The SwitchMi Designer function returns a dataframe identical to the .csv file called "selected_toeholds_results" detailed below and create two documents :
+(1) A first .csv file called "toehold_candidates" is created containing all toehold switch sequences which have the requirements (2 weak pairs / 1 strong pair at the hairpin base and minimum 4 unpaired residues), with the following information:
+- Non paired residues = number of residues unpaired in the miRNA structure
+- Structure = secondary structure of the toehold switch candidate in Dot-Parenthesis notation
+- Sequence = the nucleic acid sequence of the subsequence candidate as toehold target
+- Start = Position of the first nucleotides from miRNA that binds the toehold switch 
+- End = Position of the last nucleotides from miRNA that binds the toehold switch 
+- Length unpaired trigger = length of free nucleotides from the toehold switch that binds the trigger miRNA 
+- Length paired trigger = length of nucleotides engaged into the hairpin from the toehold switch that binds the trigger miRNA
 
-Toehold sequences are generated and tested to verify the following modalities : absence of a stop codon and stability of the beginning of the protein. A second .csv file called "selected_toeholds_results" is created and contains the following informations : 
-- Non paired count in the miRNA subsequence
-- Structure	of the miRNA subsequence
-- Sequence	
-- Start	position
-- End	position
-- Length unpaired trigger	
-- Length paired trigger	
-- Index	
-- Binding energy of toehold + mRNA	
-- Binding energy of toehold only	
-- Binding energy of mRNA only	
-- GC content	
-- Protein sequence 
-
+(2) A second .csv file called "selected_toeholds_results" is created and contains all toehold switches that passed the requirements (No stop codon in the sequence; No start codon except the one planned; The first amino acid is M and the next two amino acids are the predefined list of suitable amino acids). The file contains all previous data of these toehold switches (stored in toehold_candidates.csv) but also the following information:
+- Index = Toehold sequence ID
+- Free energy of MFE proxy structure of the toehold switch bound with the trigger miRNA
+- Free energy of MFE proxy structure of the toehold switch 
+- Free energy of MFE proxy structure of the trigger miRNA
+- GC content = percentage of G and C nucleic acid in the toehold switch sequence
+- Protein sequence produced when the trigger miRNA binds to the toehold switch
+ 
 Apart from those .csv files, the rest of the files are .txt files containing the sequence of each toehold selected, either in DNA or RNA.
 
-## Templates
-
-The folder [Templates](/Templates) contains two python scripts with the SwitchDesigner function ready to be used.
 
 ## Examples of results obtained with SwitchMi Designer
 
-The folder [Results example](/Results%20example) contains different results obtained with the SwitchMi Designer function.
+The folder [example](/example) contains different results obtained with the SwitchMi Designer function.
