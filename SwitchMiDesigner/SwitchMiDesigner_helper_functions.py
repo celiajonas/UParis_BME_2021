@@ -86,7 +86,7 @@ def generate_toehold(parameters, trigger, seq_folder, index):
     # Design the starting sequence for the switch
     toehold = get_full_switch(recognition_sequence, reporter, len_unpaired) 
     
-   
+    Toehold_Dict={}
     if toehold != 'Stop':
         toehold=str(toehold)
         toehold=DNAtoRNA(toehold)
@@ -96,11 +96,8 @@ def generate_toehold(parameters, trigger, seq_folder, index):
         my_model = Model(material='rna95',celsius=37)
         mfe_structures = mfe(strands=toehold, model=my_model)
         
-        write_toehold(seq_folder,toehold,'RNA',index)
-        write_toehold(seq_folder,toehold_DNA,'DNA',index)
+        # store
         
-        # Read the secondary structure for the toehold we just generated
-        Toehold_Dict={}
         Toehold_Dict['sequence_DNA']=toehold_DNA
         Toehold_Dict['sequence_RNA']=toehold
         Toehold_Dict['structure']=mfe_structures[0].structure 
@@ -108,7 +105,7 @@ def generate_toehold(parameters, trigger, seq_folder, index):
         Toehold_Dict['index']=index
         Toehold_Dict['energy']=mfe_structures[0].energy
         
-    return Toehold_Dict    
+    return Toehold_Dict
 
 def toehold_binding(mRNA_dict, toehold_dict):
     ''' This function check how well the toehold binds to the target in the mRNA.
@@ -264,6 +261,19 @@ def get_full_switch(recognition_sequence, reporter, length_unpaired):
     return(full_toehold)
 
 def testprotein(protein,nb,suitable_aa):
+    ''' This function receives the protein sequence, the number of aa to be tested and the list with the aa wanted.
+    
+    protein (str): amino acid sequence in capital letter
+    
+    nb (int): number of amino acid to test at the beginning of the protein sequence 
+    
+    suitable_aa (list): amino acid in capital letter that are wanted at the beginning of the protein
+    
+    
+    return : boolean (True : all amino acids tested were in the list. False : one amino acid tested was not in the list)
+    
+    '''
+    
     suitable=True
     if protein[0]!="M":
         #print(f'Amino Acid 1 = {protein[1]} - Protein do not begin by M\nSequence discarded \n ')
