@@ -61,7 +61,7 @@ def translate(rnaseq):
         
     return protein    
     
-def generate_toehold(parameters, trigger, seq_folder, index):
+def generate_toehold(parameters, trigger, seq_folder):
     ''' Generate a toehold sequence.
     
     
@@ -70,9 +70,6 @@ def generate_toehold(parameters, trigger, seq_folder, index):
     trigger : string (target trigger RNA sequence)
     
     seq_folder : string (path to the sequence file)
-    
-    index : int (toehold id)
-    
     
     return : dictionnary containing informations about the toehold (DNA sequence, RNA sequence, structure, pair list, index and energy) if one is generated 
     '''
@@ -97,12 +94,10 @@ def generate_toehold(parameters, trigger, seq_folder, index):
         mfe_structures = mfe(strands=toehold, model=my_model)
         
         # store
-        
         Toehold_Dict['sequence_DNA']=toehold_DNA
         Toehold_Dict['sequence_RNA']=toehold
         Toehold_Dict['structure']=mfe_structures[0].structure 
         Toehold_Dict['paired']=mfe_structures[0].structure.pairlist()
-        Toehold_Dict['index']=index
         Toehold_Dict['energy']=mfe_structures[0].energy
         
     return Toehold_Dict
@@ -116,15 +111,15 @@ def toehold_binding(mRNA_dict, toehold_dict):
     toehold_dict : dict; contains the toehold RNA sequence "sequence_RNA" (str), "index" (), "start_pos" () and "end_pos" ()
         
     
-    return : list containing data on mRNA-Toehold binding (index, toehold-mRNA binding energy, toehold binding energy, mRNA binding energy, gc content) 
+    return : dict containing data on mRNA-Toehold binding (index, toehold-mRNA binding energy, toehold binding energy, mRNA binding energy, gc content) 
     '''
     
     toehold_seq=toehold_dict['sequence_RNA']
     mRNA_seq=mRNA_dict['sequence']
     mRNA_binding_energy=mRNA_dict['energy']
     
-    binding_data=[]
-    binding_data.append(toehold_dict['index'])
+    binding_data={}
+
     
     # Run NUPACK
     toehold_mRNA = [toehold_seq, mRNA_seq]
@@ -138,18 +133,17 @@ def toehold_binding(mRNA_dict, toehold_dict):
     toehold_mRNA_dict['paired']=mfe_structures[0].structure.pairlist()
     toehold_mRNA_dict['energy']=mfe_structures[0].energy
     
-    binding_data.append(toehold_mRNA_dict['energy'])
+    binding_data['mRNA-toehold energy']=toehold_mRNA_dict['energy']
     
     # Get the binding energy for the toehold on its own
-    binding_data.append(toehold_dict['energy'])
+    binding_data['toehold energy']=toehold_dict['energy']
             
     # Add the binding energy of the mRNA on its own
-    binding_data.append(mRNA_binding_energy)
+    binding_data['mRNA energy']=mRNA_binding_energy
 
     # Look at the GC content
     gc_content = round(float(toehold_seq.count('G') + toehold_seq.count('C'))*100/len(toehold_seq), 2)
-    binding_data.append(gc_content)
- 
+    binding_data['GC content']=gc_content 
     
     return binding_data
 

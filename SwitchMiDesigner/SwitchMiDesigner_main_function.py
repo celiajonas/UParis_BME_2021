@@ -149,11 +149,12 @@ def SwitchMiDesigner(parameters):
 
     selected = []
     results = []
-    
+    index=0
     print("miRNA Scanner to find trigger sequence")
     ### 3. Find candidates : Loop through the miRNA sequence to find a suitable hairpin start position
     for hairpin_start_pos in range(length_unpaired, len(mRNA_dict['sequence'])+1 - length_paired):
-
+        index=index+1
+        
         # Store the sequence of possible hairpin's base
         hairpin_base = mRNA_dict['sequence'][hairpin_start_pos:hairpin_start_pos + 3]
         
@@ -162,34 +163,26 @@ def SwitchMiDesigner(parameters):
         sub_seq = mRNA_dict['sequence'][start_pos:end_pos]
         mRNA_structure=str(mRNA_dict['structure'])
         sub_struc = mRNA_structure[start_pos:end_pos]
-
-        #sub_seq_up=mRNA_dict['sequence'][start_pos:hairpin_start_pos]
-        #sub_seq_p=mRNA_dict['sequence'][hairpin_start_pos+3:end_pos]
-        #print(f'miRNA subsequence : {sub_seq_up}[{hairpin_base}]{sub_seq_p}')
-        #print(f'Start position : {start_pos} End Position : {end_pos-1}')
+      
         
         # Discard cases for which the base of the hairpin does not have two weak pairs and a strong one
         if hairpin_base.count('A') + hairpin_base.count('U') != 2:
-            #print("Hairpin base doesn't have 2 weak pairs\nSequence discarded \n ")
             continue
-              
+
         # Count the number of unpaired bases in the miRNA subsequence 
         unpaired = sub_struc.count('.')
         
         # Discard cases for which the number of unpaired bases in the subsequence doesn't match the minimum number of unpaired bases.
         if unpaired < min_unpaired:
-            #print("miRNA subsequence contains less unpaired bases than the minimum required\nSequence discarded \n ")
             continue 
         
         # Store values
-        hairpin_data=[unpaired, sub_struc, sub_seq, start_pos + 1, end_pos, length_unpaired, length_paired]
+        hairpin_data=[index,unpaired, sub_struc, sub_seq, start_pos + 1, end_pos, length_unpaired, length_paired]
         selected.append(hairpin_data)
-        index=len(selected)-1
         
         ### 4. Generate toehold 
-        #toehold_dict={}
-        toehold_dict=generate_toehold(parameters, sub_seq, seq_folder, index)
-        #print("Toehold switch generated")
+        toehold_dict=generate_toehold(parameters, sub_seq, seq_folder)
+
         if toehold_dict:
             # Store values
             toehold_dict["start_pos"]=start_pos + 1
@@ -197,6 +190,10 @@ def SwitchMiDesigner(parameters):
                 
             ### 5. Check how well the toeholds bind to the target in the mRNA
             binding_data=toehold_binding(mRNA_dict, toehold_dict)
+            
+            # Discard toehold if binding MFE is bigger than the sum of each when not bound
+            if binding_data['mRNA-toehold energy'] > (binding_data['toehold energy']+ binding_data['mRNA energy']):
+                continue
                 
             ### 6. Verify the protein produced by the toehold switch    
             protein=translate(toehold_dict["sequence_RNA"])
@@ -205,8 +202,8 @@ def SwitchMiDesigner(parameters):
             suitable=testprotein(protein,3,suitable_aa)
             if suitable==False:
                 continue
-            write_toehold(seq_folder,toehold_dict['sequence_RNA'],'RNA',toehold_dict['index'])
-            write_toehold(seq_folder,toehold_dict['sequence_DNA'],'DNA',toehold_dict['index'])
+            write_toehold(seq_folder,toehold_dict['sequence_RNA'],'RNA',index)
+            write_toehold(seq_folder,toehold_dict['sequence_DNA'],'DNA',index)
         
             # Add this row to the list of results
             results_list=[]
@@ -216,16 +213,15 @@ def SwitchMiDesigner(parameters):
                 results_list.append(i)
             results_list.append(protein)
             results.append(results_list)
-
-    #print("miRNA Scanner to find trigger sequence : stop \n ")
+        
     ### 7. Create csv files for results
     if len(selected)>0:
-        tmp = pd.DataFrame(np.array(selected), columns=['Non paired residues', 'Structure', 'Sequence', 'Start', 'End', 'Length unpaired trigger', 'Length paired trigger'])
+        tmp = pd.DataFrame(np.array(selected), columns=['Index','Non paired residues', 'Structure', 'Sequence', 'Start', 'End', 'Length unpaired trigger', 'Length paired trigger'])
         df = tmp.sort_values(by = 'Non paired residues', ascending = False)
         df.to_csv(path_or_buf=os.path.join(seq_folder, 'toehold_candidates.csv'), sep = '\t', index = False)
     
     if len(results)>0:
-        results_df = pd.DataFrame(results, columns=['Non paired residues', 'Structure', 'Sequence', 'Start', 'End', 'Length unpaired trigger', 'Length paired trigger', 'Index', 'Binding_energy_toehold_mRNA', 'Binding_energy_toehold', 'Binding_energy_mRNA', 'GC content','Protein_sequence'])
+        results_df = pd.DataFrame(results, columns=['Index','Non paired residues', 'Structure', 'Sequence', 'Start', 'End', 'Length unpaired trigger', 'Length paired trigger', 'Binding_energy_toehold_mRNA', 'Binding_energy_toehold', 'Binding_energy_mRNA', 'GC content','Protein_sequence'])
         sorted_results = results_df.sort_values(['Binding_energy_toehold_mRNA'], ascending = False)
         sorted_results.to_csv(path_or_buf=os.path.join(seq_folder, 'selected_toeholds_results.csv'), sep = '\t', index = False)
         print("Toehold canditates stored in df and csv file")

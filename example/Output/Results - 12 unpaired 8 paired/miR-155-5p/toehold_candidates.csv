@@ -1,0 +1,4 @@
+Index	Non paired residues	Structure	Sequence	Start	End	Length unpaired trigger	Length paired trigger
+2	16	....(((............)	UAAUGCUAAUCGUGAUAGGG	2	21	12	8
+3	15	...(((............))	AAUGCUAAUCGUGAUAGGGG	3	22	12	8
+5	14	.(((............))).	UGCUAAUCGUGAUAGGGGUU	5	24	12	8

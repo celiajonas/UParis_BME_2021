@@ -1,0 +1,7 @@
+Sequence : /Users/celiajonas/Downloads/UParis_BME_2021-main/example/miRNA sequences/hsa-miR-200c.fasta
+Length unpaired : 10
+Length paired : 9
+Output_folder : /Users/celiajonas/Downloads/UParis_BME_2021-main/example/Output/Results - 10 unpaired 9 paired
+Reporter : ATGCGTAAA
+mol_type : RNA
+Minimum unpaired residues : 4
