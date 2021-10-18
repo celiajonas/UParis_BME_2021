@@ -64,6 +64,7 @@ The parameters dictionnary must contain all the necessary adjustable variables f
 ## Output
 
 The SwitchMi Designer function returns a dataframe identical to the .csv file called "selected_toeholds_results" detailed below and create two documents :
+
 (1) A first .csv file called "toehold_candidates" is created containing all toehold switch sequences which have the requirements (2 weak pairs / 1 strong pair at the hairpin base and minimum 4 unpaired residues), with the following information:
 - Non paired residues = number of residues unpaired in the miRNA structure
 - Structure = secondary structure of the toehold switch candidate in Dot-Parenthesis notation
