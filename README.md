@@ -1,5 +1,7 @@
 # SwitchMiDesigner
 
+![](Figures/LogoSMD.png)
+
 ## Description
 
 SwitchMi Designer is a tool developped to design toehold switch that target small RNA sequences such as microRNA. Toehold switches are de-novo-designed-riboregulators that are  composed  of  two strands  of  RNA. Firstly,  the  switch  strand  contains a single stranded sequence at the 5’ end that is followed by the hairpin module upstream the repressed gene. The hairpin  module  includes  the  ribosome binding site  (RBS) in the loop of the hairpin and the start codon (AUG). The repressed  gene  encodes  for  a  colorimetric,  fluorescent, or  electrochemical  measurable  output.  
